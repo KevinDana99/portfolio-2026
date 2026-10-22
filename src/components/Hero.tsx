@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { FaGithub } from 'react-icons/fa'
 import { heroContent } from '@/data/content'
 import { usePreferences } from '@/context/PreferencesContext'
 
@@ -80,6 +81,15 @@ export default function Hero() {
       <div className="mx-auto mt-8 flex w-full max-w-[1440px] flex-wrap items-center gap-3">
         <a href="#proyectos" className="inline-flex h-12 items-center justify-center rounded-full bg-primary-500 px-6 text-sm font-bold text-white shadow-lg shadow-primary-900/30 transition-colors hover:bg-primary-400">{t(heroContent.ctaProjects)}</a>
         <a href="/kevin-dana-cv.pdf" download="Kevin-Dana-CV.pdf" className="inline-flex h-12 items-center justify-center rounded-full border border-primary-300/30 bg-primary-500/5 px-6 text-sm font-bold text-dark-100 transition-colors hover:bg-primary-500/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950">{t('Descargar CV')}</a>
+        <a
+          href="https://github.com/kevindana99"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub de Kevin Dana"
+          className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary-300/30 bg-primary-500/5 text-dark-100 transition-colors hover:bg-primary-500/15 hover:text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950"
+        >
+          <FaGithub className="h-5 w-5" aria-hidden="true" />
+        </a>
       </div>
     </section>
   )

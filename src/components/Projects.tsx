@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { IoLogoGithub } from 'react-icons/io5'
 import { SiStorybook } from 'react-icons/si'
 import { FadeIn, SectionWrapper } from '@/components/ui/animations'
 import { ViewportSuspense } from '@/components/ui/ViewportSuspense'
@@ -50,6 +51,7 @@ function ProjectCard({ project, index, t }: { project: (typeof projects)[number]
             ) : (
               <button type="button" disabled aria-label={`${t('Ver demo')}, ${t('Próximamente')}`} title={t('Próximamente')} className="inline-flex h-10 cursor-not-allowed items-center justify-center rounded-full bg-primary-500/40 px-5 text-sm font-bold text-white/60">{t('Ver demo')}</button>
             )}
+            {project.repository && <a href={project.repository} target="_blank" rel="noopener noreferrer" className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-dark-600 bg-dark-800/70 px-5 text-sm font-bold text-dark-100 transition-colors hover:border-primary-500/50 hover:bg-dark-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-800"><IoLogoGithub className="h-4 w-4" aria-hidden="true" /> {t('Ver código')}</a>}
             {project.showLibrary && (project.library ? (
               <a href={project.library} target="_blank" rel="noopener noreferrer" className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#ff4785]/50 bg-[#ff4785]/10 px-5 text-sm font-bold text-[#ff7aa6] transition-colors hover:bg-[#ff4785]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4785] focus-visible:ring-offset-2 focus-visible:ring-offset-dark-800"><SiStorybook className="h-4 w-4" aria-hidden="true" /> {t('Ver librería')}</a>
             ) : (

@@ -140,6 +140,7 @@ export interface Project {
   technologies: string[]
   demo?: string
   demoLabel?: string
+  repository?: string
   library?: string
   showLibrary?: boolean
 }
@@ -161,7 +162,8 @@ export const projects: Project[] = [
       'MCP de Figma'
     ],
     demo: 'https://inteligencia-fiscal-jujuy.vercel.app/',
-    demoLabel: 'Ver demo'
+    demoLabel: 'Ver demo',
+    repository: 'https://github.com/KevinDana99/inteligencia-fiscal-jujuy'
   },
 
   {
@@ -178,7 +180,8 @@ export const projects: Project[] = [
       'Styled Components',
       'PHP',
       'REST APIs'
-    ]
+    ],
+    repository: 'https://github.com/KevinDana99/te-entrego-multiplatform'
   },
   {
     id: '2',
@@ -194,7 +197,8 @@ export const projects: Project[] = [
       'Google Maps API',
       'PHP',
       'REST API'
-    ]
+    ],
+    repository: 'https://github.com/KevinDana99/youme'
   },
   {
     id: '3',
@@ -213,6 +217,7 @@ export const projects: Project[] = [
     ],
     demo: 'https://patagoniachic.com',
     demoLabel: 'Ver sitio',
+    repository: 'https://github.com/KevinDana99/patagonia-chic',
     showLibrary: true,
     library: 'https://patagonia-chic-sandy.vercel.app/'
   },

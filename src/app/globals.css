@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark-50: 248 249 250;
+  --color-dark-100: 233 236 239;
+  --color-dark-200: 222 226 230;
+  --color-dark-300: 206 212 218;
+  --color-dark-400: 173 181 189;
+  --color-dark-500: 134 142 150;
+  --color-dark-600: 73 80 87;
+  --color-dark-700: 52 58 64;
+  --color-dark-800: 33 37 41;
+  --color-dark-900: 26 26 46;
+  --color-dark-950: 13 13 26;
+  --grid-line: rgba(96, 136, 255, 0.07);
+  --carousel-fade: 20 20 36;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root.light {
+  --color-dark-50: 15 23 42;
+  --color-dark-100: 30 41 59;
+  --color-dark-200: 51 65 85;
+  --color-dark-300: 71 85 105;
+  --color-dark-400: 100 116 139;
+  --color-dark-500: 100 116 139;
+  --color-dark-600: 148 163 184;
+  --color-dark-700: 203 213 225;
+  --color-dark-800: 255 255 255;
+  --color-dark-900: 241 245 249;
+  --color-dark-950: 248 250 252;
+  --grid-line: rgba(59, 91, 219, 0.09);
+  --carousel-fade: 241 245 249;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #3b5bdb #1a1a2e;
+}
+
+section[id] {
+  scroll-margin-top: var(--navbar-height, 100px);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-thumb { background: #3b5bdb; border-radius: 4px; }
+
+body {
+  background: rgb(var(--color-dark-950));
+  color: rgb(var(--color-dark-100));
+  overflow-x: hidden;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+/* Used by the retained blue hero. */
+.site-grid {
+  --site-gutter: 1.25rem;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: min(8vw, 96px) min(8vw, 96px);
+  background-position: var(--site-gutter) 0;
+}
+
+@media (min-width: 768px) {
+  .site-grid {
+    --site-gutter: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-grid {
+    --site-gutter: max(4rem, calc((100vw - 1440px) / 2));
+  }
+}
+
+.display-type {
+  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  font-stretch: condensed;
+  letter-spacing: -0.055em;
+}
+
+.carousel-fade-left {
+  background: linear-gradient(to right, rgb(var(--carousel-fade)) 0%, rgb(var(--carousel-fade) / 0.55) 50%, transparent 100%);
+}
+
+.carousel-fade-right {
+  background: linear-gradient(to left, rgb(var(--carousel-fade)) 0%, rgb(var(--carousel-fade) / 0.55) 50%, transparent 100%);
+}
+
+:root.light .glass,
+:root.light .theme-card {
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.07), 0 18px 45px rgba(37, 54, 80, 0.12);
+}
+
+:root.light .glass:hover,
+:root.light .theme-card:hover {
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08), 0 22px 55px rgba(37, 54, 80, 0.16);
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-600;
+  }
+  .glass {
+    @apply bg-dark-800/60 backdrop-blur-xl border border-dark-700/50;
+  }
+  .glow {
+    box-shadow: 0 0 30px rgba(59, 91, 219, 0.15);
+  }
+}

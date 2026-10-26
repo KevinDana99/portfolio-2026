@@ -25,6 +25,8 @@ const certifications = [
   { title: 'Animaciones CSS Práctico', image: '/certifications/animaciones-css-practico-certificate.png' },
 ]
 
+const allCertificationsUrl = 'https://drive.google.com/drive/u/0/folders/1dD1u1GxA1sWVLgSv6Ke4PP_xr6vadPCL'
+
 type Certification = (typeof certifications)[number]
 
 export function CertificationsCarousel() {
@@ -110,6 +112,18 @@ export function CertificationsCarousel() {
           className="carousel-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-28 sm:w-40"
           aria-hidden="true"
         />
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <a
+          href={allCertificationsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary-500 px-6 text-sm font-bold text-white shadow-lg shadow-primary-900/25 transition-colors hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900"
+        >
+          {t('Ver todos los certificados')}
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
 
       <AnimatePresence>

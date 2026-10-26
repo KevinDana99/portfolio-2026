@@ -40,6 +40,7 @@ const english: Record<string, string> = {
   'Certificaciones profesionales': 'Professional certifications',
   'Certificación': 'Certification',
   'Ver certificado': 'View certificate',
+  'Ver todos los certificados': 'View all certificates',
   'Cerrar certificado': 'Close certificate',
   'Proyectos destacados': 'Featured projects',
   'Vista previa de': 'Preview of',

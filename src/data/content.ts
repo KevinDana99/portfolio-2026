@@ -137,6 +137,8 @@ export interface Project {
   context: string
   description: string
   image: string
+  imageWidth: number
+  imageHeight: number
   technologies: string[]
   demo?: string
   demoLabel?: string
@@ -153,6 +155,8 @@ export const projects: Project[] = [
     description:
       'Centralicé en un sistema los procesos que los contadores de Inteligencia Fiscal gestionaban en Excel. Lideré el frontend con arquitectura hexagonal y Spec-Driven Development. La plataforma automatiza tareas, cruza datos y genera resúmenes por contribuyente para analizar deudores con menos pasos manuales.',
     image: '/projects/inteligencia-fiscal-jujuy.gif',
+    imageWidth: 772,
+    imageHeight: 348,
     technologies: [
       'Next.js',
       'TypeScript',
@@ -173,6 +177,8 @@ export const projects: Project[] = [
     description:
       'Desarrollé desde cero un plugin que conecta Shopify y WooCommerce con Te Entrego. Construí el frontend, las integraciones y una arquitectura agnóstica de contenedores con routing propio. Automatiza la creación de envíos y el seguimiento, evitando que los comercios carguen manualmente cada operación.',
     image: '/projects/te-entrego.gif',
+    imageWidth: 640,
+    imageHeight: 360,
     technologies: [
       'React',
       'TypeScript',
@@ -190,6 +196,8 @@ export const projects: Project[] = [
     description:
       'Desarrollé un plugin React para WooCommerce que geolocaliza al cliente y preselecciona la sucursal más cercana en el checkout. Integré Google Maps y una API propia para administrar credenciales y coordenadas. Operó en unas 10 sucursales y redujo recorridos y costos de envío.',
     image: '/projects/youme.gif',
+    imageWidth: 640,
+    imageHeight: 360,
     technologies: [
       'React',
       'WordPress',
@@ -207,6 +215,8 @@ export const projects: Project[] = [
     description:
       'Reconstruimos el sitio desde cero, migrando de jQuery y CSS3 a React y Next.js con SSR. Creamos el sistema frontend, la librería Storybook, routing, modales con máquinas de estado y tokens visuales. La nueva plataforma optimizó el flujo de compra, las imágenes y los tiempos de carga.',
     image: '/projects/patagonia.gif',
+    imageWidth: 772,
+    imageHeight: 348,
     technologies: [
       'React',
       'Next.js',
@@ -228,6 +238,8 @@ export const projects: Project[] = [
     description:
       'Desarrollé un plugin de categorías y personalizaciones de temas sobre Odoo, priorizando JavaScript y complementándolo con Python. La solución hizo posible una navegación que el soporte anterior consideraba inviable, mejoró el acceso a productos y eliminó limitaciones y deuda técnica.',
     image: '/projects/nueva-energia.gif',
+    imageWidth: 640,
+    imageHeight: 360,
     technologies: ['Odoo', 'JavaScript', 'Python', 'Theme Development', 'IA'],
     demo: 'https://nuevaenergia.cl',
     demoLabel: 'Ver sitio'

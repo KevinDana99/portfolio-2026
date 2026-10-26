@@ -124,7 +124,7 @@ export function AboutSectionSkeleton() {
 export function TechnologiesSectionSkeleton() {
   return (
     <section className="bg-dark-900/50 px-5 py-14 md:px-10 md:py-16 lg:px-16" aria-label="Cargando tecnologías">
-      <div className="mx-auto max-w-5xl"><HeadingSkeleton /><div className="mt-16 grid grid-cols-2 gap-6 sm:grid-cols-4 md:grid-cols-6 md:gap-8 lg:grid-cols-8">{Array.from({ length: 16 }, (_, i) => <TechnologySkeleton key={i} />)}</div></div>
+      <div className="mx-auto max-w-5xl"><HeadingSkeleton /><div className="mt-16 grid grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-6 md:gap-8 lg:grid-cols-8">{Array.from({ length: 16 }, (_, i) => <div key={i} className={i >= 9 ? 'hidden lg:block' : ''}><TechnologySkeleton /></div>)}</div></div>
     </section>
   )
 }

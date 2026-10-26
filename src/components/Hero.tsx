@@ -25,8 +25,8 @@ export default function Hero() {
     <section id="hero" className="site-grid relative flex min-h-screen flex-col justify-center overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pb-20 md:pt-32 lg:px-16">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.65 }} className="mx-auto grid w-full max-w-[1440px] lg:grid-cols-[1fr_34%] lg:gap-10">
         <div className="flex flex-col justify-between">
-          <div className="mb-14 flex w-fit items-center gap-3 rounded-full border border-primary-400/20 bg-primary-500/10 px-4 py-2 text-sm text-primary-200">
-            <span className="h-2.5 w-2.5 rounded-full bg-primary-400 shadow-[0_0_14px_rgba(91,184,255,.8)]" />
+          <div className="availability-pill mb-14 flex w-fit items-center gap-3 rounded-full border border-primary-400/20 bg-primary-500/10 px-4 py-2 text-sm text-primary-200">
+            <span className="availability-pill-dot h-2.5 w-2.5 rounded-full bg-primary-400 shadow-[0_0_14px_rgba(91,184,255,.8)]" />
             {t('Disponible para proyectos selectos · Argentina / remoto')}
           </div>
           <div>
@@ -73,7 +73,7 @@ export default function Hero() {
                 <button
                   type="button"
                   onClick={closePresentationVideo}
-                  className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-dark-950/80 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md transition-colors hover:bg-dark-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
+                  className="absolute right-4 top-4 z-10 rounded-full border border-dark-600/50 bg-dark-950/80 px-4 py-2 text-xs font-semibold text-dark-100 shadow-lg shadow-black/20 backdrop-blur-md transition-colors hover:bg-dark-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
                   aria-label={t('Cerrar video y volver a la portada')}
                 >
                   {t('Volver a la portada')}

@@ -1,13 +1,26 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { usePreferences } from '@/context/PreferencesContext'
 
 export function ScrollToTopButton() {
+  const [isVisible, setIsVisible] = useState(false)
   const { t } = usePreferences()
+
+  useEffect(() => {
+    const updateVisibility = () => setIsVisible(window.scrollY > 0)
+
+    updateVisibility()
+    window.addEventListener('scroll', updateVisibility, { passive: true })
+    return () => window.removeEventListener('scroll', updateVisibility)
+  }, [])
+
   const scrollToTop = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     window.scrollTo({ top: 0, left: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' })
   }
+
+  if (!isVisible) return null
 
   return (
     <button

@@ -24,16 +24,16 @@ export default function Projects() {
 function ProjectCard({ project, index, t }: { project: (typeof projects)[number]; index: number; t: (text: string) => string }) {
   return (
     <motion.article initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ delay: index * 0.15, duration: 0.7 }} className="relative group glass flex h-full min-h-[650px] flex-col rounded-3xl overflow-hidden border border-dark-700/50 hover:border-primary-500/30 transition-all duration-500 lg:min-h-[680px]">
-      <div className="relative aspect-video shrink-0 bg-gradient-to-br from-primary-500/20 to-primary-900/20">
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="shrink-0 overflow-hidden bg-dark-950">
         <img
           src={project.image}
+          width={project.imageWidth}
+          height={project.imageHeight}
           alt={`${t('Vista previa de')} ${project.name}`}
           loading="lazy"
           decoding="async"
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+          className="block h-auto w-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-950/35 to-transparent" />
       </div>
       <div className="flex flex-1 flex-col p-8">
         <div className="flex flex-col gap-4">
@@ -42,7 +42,7 @@ function ProjectCard({ project, index, t }: { project: (typeof projects)[number]
             <h3 className="text-2xl font-bold">{project.name}</h3>
           </div>
           <p className="text-sm leading-relaxed text-dark-300">{t(project.description)}</p>
-          <div className="flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="px-3 py-1 text-xs font-medium text-primary-300 bg-primary-500/10 border border-primary-500/20 rounded-full">{tech}</span>)}</div>
+          <div className="flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="project-technology-pill rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-xs font-medium text-primary-300">{tech}</span>)}</div>
         </div>
         <div className="mt-auto pt-6">
           <div className="flex min-h-[65px] flex-wrap items-center gap-3 border-t border-dark-700/50 pt-6">

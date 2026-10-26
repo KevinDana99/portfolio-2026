@@ -112,6 +112,27 @@ body {
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08), 0 22px 55px rgba(37, 54, 80, 0.16);
 }
 
+:root.light .availability-pill {
+  color: #3b5bdb;
+  border-color: rgba(59, 91, 219, 0.4);
+  background-color: rgba(59, 91, 219, 0.12);
+}
+
+:root.light .availability-pill-dot {
+  background-color: #3b5bdb;
+  box-shadow: 0 0 14px rgba(59, 91, 219, 0.55);
+}
+
+:root.light .project-technology-pill {
+  color: #3b5bdb;
+  border-color: rgba(59, 91, 219, 0.4);
+  background-color: rgba(59, 91, 219, 0.12);
+}
+
+:root.light .experience-card-title {
+  color: #3b5bdb;
+}
+
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-600;

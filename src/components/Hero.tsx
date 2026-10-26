@@ -8,7 +8,18 @@ import { usePreferences } from '@/context/PreferencesContext'
 
 export default function Hero() {
   const [showPresentationVideo, setShowPresentationVideo] = useState(false)
+  const [revealPresentationVideo, setRevealPresentationVideo] = useState(false)
   const { t } = usePreferences()
+
+  const openPresentationVideo = () => {
+    setRevealPresentationVideo(false)
+    setShowPresentationVideo(true)
+  }
+
+  const closePresentationVideo = () => {
+    setRevealPresentationVideo(false)
+    setShowPresentationVideo(false)
+  }
 
   return (
     <section id="hero" className="site-grid relative flex min-h-screen flex-col justify-center overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pb-20 md:pt-32 lg:px-16">
@@ -34,20 +45,34 @@ export default function Hero() {
             {showPresentationVideo ? (
               <>
                 <video
-                  className="h-full w-full bg-dark-950 object-cover object-[50%_35%]"
+                  className={`h-full w-full bg-dark-950 object-cover object-[50%_35%] transition-opacity duration-700 ${revealPresentationVideo ? 'opacity-100' : 'opacity-0'}`}
                   controls
                   autoPlay
                   playsInline
                   preload="metadata"
                   poster="/profile.jpeg"
+                  onPlaying={() => setRevealPresentationVideo(true)}
+                  onEnded={closePresentationVideo}
                   aria-label={t('Video de presentación de Kevin Dana')}
                 >
                   <source src="/kevin-dana-presentacion.mp4" type="video/mp4" />
                   {t('Tu navegador no puede reproducir este video.')}
                 </video>
+                <div
+                  className={`pointer-events-none absolute inset-0 transition-opacity duration-700 ${revealPresentationVideo ? 'opacity-0' : 'opacity-100'}`}
+                  aria-hidden="true"
+                >
+                  <img src="/profile.jpeg" alt="" className="h-full w-full object-cover object-[50%_35%] grayscale contrast-110 opacity-90" />
+                  <div className="absolute inset-0 bg-primary-700/20 mix-blend-color" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-950/75 via-transparent to-dark-950/10" />
+                  <div className="absolute inset-x-0 bottom-8 flex items-center justify-center gap-2 text-xs font-medium text-white/80">
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-primary-300" />
+                    {t('Preparando presentación…')}
+                  </div>
+                </div>
                 <button
                   type="button"
-                  onClick={() => setShowPresentationVideo(false)}
+                  onClick={closePresentationVideo}
                   className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-dark-950/80 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md transition-colors hover:bg-dark-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
                   aria-label={t('Cerrar video y volver a la portada')}
                 >
@@ -61,7 +86,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-950/75 via-transparent to-dark-950/10" />
                 <button
                   type="button"
-                  onClick={() => setShowPresentationVideo(true)}
+                  onClick={openPresentationVideo}
                   className="group absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-300"
                   aria-label={t('Reproducir video de presentación')}
                   aria-pressed={showPresentationVideo}

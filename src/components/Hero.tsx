@@ -5,10 +5,13 @@ import { motion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa'
 import { heroContent } from '@/data/content'
 import { usePreferences } from '@/context/PreferencesContext'
+import { useElementLoading } from '@/hooks/useElementLoading'
+import { HeroSkeleton } from '@/components/ui/skeletons'
 
 export default function Hero() {
   const [showPresentationVideo, setShowPresentationVideo] = useState(false)
   const [revealPresentationVideo, setRevealPresentationVideo] = useState(false)
+  const { elementRef: heroRef, isLoading } = useElementLoading<HTMLElement>()
   const { t } = usePreferences()
 
   const openPresentationVideo = () => {
@@ -22,7 +25,9 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="site-grid relative flex min-h-screen flex-col justify-center overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pb-20 md:pt-32 lg:px-16">
+    <div className="relative">
+      {isLoading && <div className="absolute inset-0 z-20 bg-dark-950"><HeroSkeleton /></div>}
+      <section ref={heroRef} id="hero" aria-busy={isLoading} className={`site-grid relative flex min-h-screen flex-col justify-center overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pb-20 md:pt-32 lg:px-16 ${isLoading ? 'invisible' : ''}`}>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.65 }} className="mx-auto grid w-full max-w-[1440px] lg:grid-cols-[1fr_34%] lg:gap-10">
         <div className="flex flex-col justify-between">
           <div className="availability-pill mb-14 flex w-fit items-center gap-3 rounded-full border border-primary-400/20 bg-primary-500/10 px-4 py-2 text-sm text-primary-200">
@@ -116,7 +121,8 @@ export default function Hero() {
           <FaGithub className="h-5 w-5" aria-hidden="true" />
         </a>
       </div>
-    </section>
+      </section>
+    </div>
   )
 }
 

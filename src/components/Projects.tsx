@@ -15,15 +15,35 @@ export default function Projects() {
     <SectionWrapper id="proyectos" className="bg-dark-900/50">
       <div className="mx-auto w-full max-w-5xl">
         <FadeIn className="text-center"><h2 className="text-4xl font-bold md:text-5xl"><span className="text-gradient">{t('Proyectos destacados')}</span></h2></FadeIn>
-        <FadeIn delay={0.2}><div className="mt-16 grid gap-8 lg:grid-cols-2">{projects.map((project, index) => <ViewportSuspense key={project.id} fallback={<ProjectCardSkeleton />} className="h-full"><ProjectCard project={project} index={index} t={t} /></ViewportSuspense>)}</div></FadeIn>
+        <FadeIn delay={0.2}>
+          <div className="mt-16 grid gap-8 lg:grid-cols-2">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.15, duration: 0.7 }}
+                className="h-full"
+              >
+                <ViewportSuspense
+                  fallback={<ProjectCardSkeleton imageWidth={project.imageWidth} imageHeight={project.imageHeight} />}
+                  className="h-full"
+                >
+                  <ProjectCard project={project} t={t} />
+                </ViewportSuspense>
+              </motion.div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </SectionWrapper>
   )
 }
 
-function ProjectCard({ project, index, t }: { project: (typeof projects)[number]; index: number; t: (text: string) => string }) {
+function ProjectCard({ project, t }: { project: (typeof projects)[number]; t: (text: string) => string }) {
   return (
-    <motion.article initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ delay: index * 0.15, duration: 0.7 }} className="relative group glass flex h-full min-h-[650px] flex-col rounded-3xl overflow-hidden border border-dark-700/50 hover:border-primary-500/30 transition-all duration-500 lg:min-h-[680px]">
+    <article className="relative group glass flex h-full min-h-[650px] flex-col rounded-3xl overflow-hidden border border-dark-700/50 hover:border-primary-500/30 transition-all duration-500 lg:min-h-[680px]">
       <div className="shrink-0 overflow-hidden bg-dark-950">
         <img
           src={project.image}
@@ -60,6 +80,6 @@ function ProjectCard({ project, index, t }: { project: (typeof projects)[number]
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   )
 }

@@ -43,30 +43,33 @@ export function TechnologySkeleton() {
 
 export function HighlightSkeleton() {
   return (
-    <div className="glass flex h-[120px] items-start gap-4 rounded-2xl p-5" aria-hidden="true">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-500/10">
-        <SkeletonShape className="h-6 w-6" radius={14} />
+    <div className="theme-card flex h-[180px] w-[200px] max-w-full box-border flex-none flex-col items-center justify-start gap-4 overflow-hidden rounded-2xl border border-dark-700/60 bg-dark-800/60 px-4 py-6 backdrop-blur-xl" aria-hidden="true">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary-400/20 bg-primary-500/10">
+        <SkeletonShape className="h-6 w-6" radius={8} />
       </div>
-      <div className="flex h-full w-full flex-col justify-center gap-2">
-        <SkeletonShape className="h-4 w-full" />
-        <SkeletonShape className="h-4 w-4/5" />
-        <SkeletonShape className="h-4 w-2/5" />
+      <div className="flex min-h-12 w-full flex-col items-center justify-center gap-2">
+        <SkeletonShape className="h-3.5 w-full" />
+        <SkeletonShape className="h-3.5 w-4/5" />
       </div>
     </div>
   )
 }
 
-export function ProjectCardSkeleton() {
+export function ProjectCardSkeleton({ imageWidth = 16, imageHeight = 9 }: { imageWidth?: number; imageHeight?: number }) {
   return (
-    <article className="glass flex h-[650px] flex-col overflow-hidden rounded-3xl border border-dark-700/50 lg:h-[680px]" aria-hidden="true">
-      <div className="relative aspect-video w-full shrink-0 bg-primary-500/5">
+    <article className="glass flex h-full min-h-[650px] flex-col overflow-hidden rounded-3xl border border-dark-700/50 lg:min-h-[680px]" aria-hidden="true">
+      <div className="relative w-full shrink-0 bg-primary-500/5" style={{ aspectRatio: `${imageWidth} / ${imageHeight}` }}>
         <SkeletonShape className="absolute inset-0 h-full w-full" radius={0} />
       </div>
-      <div className="flex flex-1 flex-col space-y-6 p-8">
-        <SkeletonShape className="h-8 w-1/2 shrink-0" />
-        <div className="space-y-3"><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-3/4" /></div>
-        <div className="flex flex-wrap gap-2"><SkeletonShape className="h-6 w-20" radius={20} /><SkeletonShape className="h-6 w-24" radius={20} /><SkeletonShape className="h-6 w-16" radius={20} /></div>
-        <div className="mt-auto border-t border-dark-700/50 pt-4"><SkeletonShape className="h-5 w-32" /></div>
+      <div className="flex flex-1 flex-col p-8">
+        <div className="flex flex-col gap-4">
+          <div className="space-y-2"><SkeletonShape className="h-3 w-2/5" /><SkeletonShape className="h-7 w-3/5" /></div>
+          <div className="space-y-3"><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-3/4" /></div>
+          <div className="flex flex-wrap gap-2"><SkeletonShape className="h-6 w-20" radius={20} /><SkeletonShape className="h-6 w-24" radius={20} /><SkeletonShape className="h-6 w-16" radius={20} /></div>
+        </div>
+        <div className="mt-auto pt-6">
+          <div className="flex min-h-[65px] items-center gap-3 border-t border-dark-700/50 pt-6"><SkeletonShape className="h-10 w-28" radius={24} /><SkeletonShape className="h-10 w-32" radius={24} /></div>
+        </div>
       </div>
     </article>
   )
@@ -75,11 +78,11 @@ export function ProjectCardSkeleton() {
 export function ExperienceSkeleton() {
   return (
     <div className="relative flex min-h-[280px] flex-col items-start gap-6 md:min-h-[180px] md:flex-row" aria-hidden="true">
-      <div className="absolute left-4 top-2 h-4 w-4 -translate-x-1/2 rounded-full bg-primary-500/20 md:left-1/2" />
+      <div className="absolute left-4 top-2 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-primary-500/20 bg-primary-500/40 md:left-1/2" />
       <div className="w-full pl-12 md:w-1/2 md:pl-0 md:pr-8">
-        <div className="glass w-full space-y-3 rounded-2xl p-6"><SkeletonShape className="h-6 w-4/5" /><SkeletonShape className="h-4 w-1/2" /><SkeletonShape className="h-3 w-1/3" /></div>
+        <div className="glass w-full space-y-3 rounded-2xl p-6"><SkeletonShape className="h-6 w-4/5" /><SkeletonShape className="h-4 w-1/2" /><SkeletonShape className="h-3 w-3/5" /><SkeletonShape className="h-3 w-4/5" /></div>
       </div>
-      <div className="w-full space-y-3 pl-12 md:w-1/2 md:pl-8 md:pt-3"><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-4/5" /></div>
+      <div className="w-full space-y-3 pl-12 md:w-1/2 md:pl-8"><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-full" /><SkeletonShape className="h-4 w-4/5" /></div>
     </div>
   )
 }
@@ -140,7 +143,7 @@ export function ProjectsSectionSkeleton() {
 export function ExperienceSectionSkeleton() {
   return (
     <section className="bg-dark-900/50 px-5 py-14 md:px-10 md:py-16 lg:px-16" aria-label="Cargando experiencia">
-      <div className="mx-auto max-w-4xl"><HeadingSkeleton /><div className="mt-16 space-y-12">{Array.from({ length: 7 }, (_, i) => <ExperienceSkeleton key={i} />)}</div></div>
+      <div className="mx-auto max-w-4xl"><HeadingSkeleton /><div className="relative mt-16"><div className="absolute left-4 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-dark-700 to-transparent md:left-1/2" /><div className="space-y-12">{Array.from({ length: 7 }, (_, i) => <ExperienceSkeleton key={i} />)}</div></div></div>
     </section>
   )
 }
@@ -148,7 +151,7 @@ export function ExperienceSectionSkeleton() {
 export function ContactSectionSkeleton() {
   return (
     <section className="flex min-h-[100svh] items-center px-5 py-14 md:px-10 md:py-16 lg:px-16" aria-label="Cargando contacto">
-      <div className="mx-auto max-w-4xl text-center"><HeadingSkeleton /><div className="mx-auto mt-6 max-w-2xl space-y-3"><SkeletonShape className="h-5 w-full" /><SkeletonShape className="mx-auto h-5 w-4/5" /></div><div className="mt-16 flex flex-col justify-center gap-6 sm:flex-row">{Array.from({ length: 3 }, (_, i) => <ContactCardSkeleton key={i} />)}</div></div>
+      <div className="mx-auto w-full max-w-4xl text-center"><HeadingSkeleton /><div className="mx-auto mt-6 max-w-2xl space-y-3"><SkeletonShape className="h-5 w-full" /><SkeletonShape className="mx-auto h-5 w-4/5" /></div><div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{Array.from({ length: 4 }, (_, i) => <ContactCardSkeleton key={i} />)}</div></div>
     </section>
   )
 }

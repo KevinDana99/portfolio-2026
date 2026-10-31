@@ -15,10 +15,25 @@ export default function Contact() {
         <FadeIn><h2 className="text-4xl font-bold md:text-5xl"><span className="text-gradient">{t('Contacto')}</span></h2><p className="mt-6 text-lg text-dark-300 max-w-2xl mx-auto leading-relaxed">{t('¿Tienes un proyecto en mente, una oportunidad laboral o necesitas una solución a medida? Estoy abierto a colaboraciones.')}</p></FadeIn>
         <FadeIn delay={0.3}>
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <ViewportSuspense fallback={<ContactCardSkeleton />}><ContactCard label="GitHub" value="@kevindana99" href={contactInfo.github} icon={<GithubIcon />} /></ViewportSuspense>
-            <ViewportSuspense fallback={<ContactCardSkeleton />}><ContactCard label="LinkedIn" value="linkedin.com/in/kevindana" href={contactInfo.linkedin} icon={<LinkedinIcon />} /></ViewportSuspense>
-            <ViewportSuspense fallback={<ContactCardSkeleton />}><ContactCard label="Email" value={contactInfo.email} href={`mailto:${contactInfo.email}`} icon={<MailIcon />} /></ViewportSuspense>
-            <ViewportSuspense fallback={<ContactCardSkeleton />}><ContactCard label="WhatsApp" value={contactInfo.whatsapp.number} href={contactInfo.whatsapp.href} icon={<WhatsappIcon />} /></ViewportSuspense>
+            {[
+              { label: 'GitHub', value: '@kevindana99', href: contactInfo.github, icon: <GithubIcon /> },
+              { label: 'LinkedIn', value: 'linkedin.com/in/kevindana', href: contactInfo.linkedin, icon: <LinkedinIcon /> },
+              { label: 'Email', value: contactInfo.email, href: `mailto:${contactInfo.email}`, icon: <MailIcon /> },
+              { label: 'WhatsApp', value: contactInfo.whatsapp.number, href: contactInfo.whatsapp.href, icon: <WhatsappIcon /> },
+            ].map((contact, index) => (
+              <motion.div
+                key={contact.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="h-full"
+              >
+                <ViewportSuspense fallback={<ContactCardSkeleton />} className="h-full">
+                  <ContactCard {...contact} />
+                </ViewportSuspense>
+              </motion.div>
+            ))}
           </div>
         </FadeIn>
       </div>
